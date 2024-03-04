@@ -34,30 +34,34 @@ function App() {
             <h1 className="text-4xl font-bold text-blue-100 pb-4">Countries</h1>
 
             <div className="flex flex-col gap-2">
-              <div className="flex flex-row gap-2">
-                <input
-                  type="checkbox"
-                  name="selectAll"
-                  value="selectAll"
-                  checked={selectAll}
-                  onChange={(e) => {
-                    setSelectAll(e.target.checked);
-                    handleSelectAll(e);
-                  }}
-                />
-                Select All
+              <div>
+                <label className="flex flex-row gap-2">
+                  <input
+                    type="checkbox"
+                    name="selectAll"
+                    value="selectAll"
+                    checked={selectAll}
+                    onChange={(e) => {
+                      setSelectAll(e.target.checked);
+                      handleSelectAll(e);
+                    }}
+                  />
+                  Select All
+                </label>
               </div>
 
               {countries.map((country, index) => (
-                <div key={index} className="flex flex-row gap-2">
-                  <input
-                    type="checkbox"
-                    name={country}
-                    value={country}
-                    checked={selectedCountries.includes(country)}
-                    onChange={handleSelectCountry}
-                  />
-                  {country}
+                <div key={index}>
+                  <label className="flex flex-row gap-2">
+                    <input
+                      type="checkbox"
+                      name={country}
+                      value={country}
+                      checked={selectedCountries.includes(country)}
+                      onChange={handleSelectCountry}
+                    />
+                    {country}
+                  </label>
                 </div>
               ))}
             </div>
