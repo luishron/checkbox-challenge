@@ -18,11 +18,21 @@ function App() {
   const handleSelectCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (selectedCountries.includes(value)) {
-      setSelectedCountries(
-        selectedCountries.filter((country) => country !== value)
+      const newSelectedCountries = selectedCountries.filter(
+        (country) => country !== value
       );
+      setSelectedCountries(newSelectedCountries);
+
+      if (newSelectedCountries.length < countries.length) {
+        setSelectAll(false);
+      }
     } else {
-      setSelectedCountries([...selectedCountries, value]);
+      const newSelectedCountries = [...selectedCountries, value];
+      setSelectedCountries(newSelectedCountries);
+
+      if (newSelectedCountries.length === countries.length) {
+        setSelectAll(true);
+      }
     }
   };
 
